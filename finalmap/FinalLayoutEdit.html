@@ -1,0 +1,106 @@
+<!-- A Versatile Layout for Full-screen Maps by Andy Cochran
+Andy Cochran 
+From https://medium.com/nyc-planning-digital/a-versatile-layout-for-full-screen-maps-229cec508b22 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Trans-Alaska Pipeline Incidents</title>
+
+    
+    <!-- JavaScript Libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
+
+  
+    <!-- CSS Links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" rel="stylesheet" />
+    <link href="FinalLayout.css" rel="stylesheet" />
+    
+
+    
+</head>
+
+<body>
+
+    <!-- SITE HEADER? SHOULD INCLUDE OR NO
+            <div class="site-header">
+        <strong class="site-title">Incident History of the Trans-Alaska Pipeline</strong>
+    </div> -->
+
+    <div class="site-main grid-x has-content-open">
+
+        <!-- <div class="search-container cell medium-3 large-2">
+            <input type="text" placeholder="Search..." class="search" />
+            <ul class="search-results no-bullet">
+                <li>Search Result 1</li>
+                <li>Search Result 2</li>
+                <li>Search Result 3</li>
+            </ul>
+        </div> -->
+        
+        <div class="map-container cell medium-auto large-order-2">
+            <!-- FRAME -->
+            	<iframe src="FinalProjMapwithIcons.html" title="Map"></iframe> 
+        </div>
+
+        <!--  Sidebar panel  
+        <div class="sidebar cell medium-3 large-2 large-order-1 show-for-medium">
+            <h5>Sidebar</h5>
+            <ul>
+                <li><a class="content-link" href="#">Open Content</a></li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+            </ul>
+
+            <hr />
+
+        </div> -->
+
+        <div class="content-close-button-container">
+            <a href="#" class="content-close-button">×</a>
+        </div>
+        
+        <!--  Content panel  -->
+        <div class="content cell large-5 large-order-3">
+            <h3>Background</h3>
+            <!-- PICTURE AND SOURCE -->
+            <img src= "https://i0.wp.com/niche-canada.org/wp-content/uploads/2017/01/1977-LoC-Photo2.png?w=926&ssl=1">
+            <p> Trans-Alaska Pipeline System, 1977. Library of Congress</p> <!-- library of congress website wasn't loading? so got it from a candian site that includes it -->
+            <!-- normal background text stuff-->
+            <p>The Trans-Alaska Pipeline....</p>
+            <p>Years of opposition from both conservation groups and Indigenous people...</p>
+            <p>Pipeline stats!!</p>
+        </div>
+
+    </div>
+
+    <script>
+       
+        $(document).ready(function() {
+
+            $('.content-close-button').click(function() {
+                $('.content-close-button').hide();
+                $('.content').hide();
+                $('.site-main').removeClass('has-content-open')
+
+                // When the map is resized programmatically, window resize must be triggered so that the map renders in the newly allotted space.
+                window.dispatchEvent(new Event('resize'));
+
+            });
+
+            $('.content-link').click(function() {
+                $('.content-close-button').show();
+                $('.content').show();
+                $('.site-main').addClass('has-content-open')
+                window.dispatchEvent(new Event('resize'));
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
