@@ -1,0 +1,86 @@
+<!-- A Versatile Layout for Full-screen Maps by Andy Cochran
+Andy Cochran 
+From https://medium.com/nyc-planning-digital/a-versatile-layout-for-full-screen-maps-229cec508b22 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Trans-Alaska Pipeline Incidents</title>
+
+    
+    <!-- JavaScript Libraries-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.js"></script>
+
+  
+    <!-- CSS Links -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" rel="stylesheet" />
+    <link href="FinalLayout.css" rel="stylesheet" />
+       <!--   Link to Google font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    
+
+    
+</head>
+
+<body>
+
+
+    <div class="site-main grid-x has-content-open">
+
+        
+        <div class="map-container cell medium-auto large-order-2">
+            <!-- FRAME -->
+            	<iframe src="FinalProjMapwithIcons.html" title="Map"></iframe> 
+        </div>
+
+        <div class="content-close-button-container">
+            <a href="#" class="content-close-button">×</a>
+        </div>
+        
+        <!--  Content panel  -->
+        <div class="content cell large-5 large-order-3">
+            <h3>Background</h3>
+            <!-- PICTURE AND SOURCE -->
+            <img src= "https://i0.wp.com/niche-canada.org/wp-content/uploads/2017/01/1977-LoC-Photo2.png?w=926&ssl=1" alt = “black and white close up of pipeline with mountains in background”>
+            <p> Trans-Alaska Pipeline System, 1977. Library of Congress</p> <!-- library of congress website wasn't loading? so got it from a candian site that includes it -->
+            
+            <!-- normal background text stuff-->
+            <p>The Trans-Alaska Pipeline started operating in 1977, after years of diffult construction. The engineers had to naviagte the difficult terrain and permafrost, developing unique construction techniques to cope with the frozen ground. The pipeline makes up a signifiant porction of Alaska's revenue every year and also provides work, however the pipeline did not come to be without incident.</p>
+            <p>Despite years of opposition from both conservation groups and Indigenous people the pipeline was built in the 1970s. The groups cited concerns over habitat loss, the land of native people being used without them seeing any benefit, and changes to tradition caused by the pipeline scaring off wildlife (whales, caribou), however after many lawsuits it was determined other transportation would have greater environmental impact. Nixon signed the Alaska Native Claims Settlement Act in 1971, requiring Native groups to give up their land in return for federal land and $962.5 million.</p>
+            <p> The sources used to create this map include the <a href="https://en.wikipedia.org/wiki/Trans-Alaska_Pipeline_System#Native_objections" target="_blank">Trans-Alaska Pipeline Wikipedia page</a>, the <a href="https://www.nytimes.com/1977/07/09/archives/explosion-closes-alaskan-pipeline-1-dead-6-hurt-pumping-station.html" target="_blank">New York Times archive</a>, and the <a href="https://www.adn.com/alaska-news/article/feds-charge-fairbanks-man-lying-about-1978-pipeline-sabotage-bombing-0/2014/05/24/" target="_blank">Anchorage Daily News</a>.</p>
+
+        </div>
+
+    </div>
+
+    <script>
+       
+        $(document).ready(function() {
+
+            $('.content-close-button').click(function() {
+                $('.content-close-button').hide();
+                $('.content').hide();
+                $('.site-main').removeClass('has-content-open')
+
+                // When the map is resized programmatically, window resize must be triggered so that the map renders in the newly allotted space.
+                window.dispatchEvent(new Event('resize'));
+
+            });
+
+            $('.content-link').click(function() {
+                $('.content-close-button').show();
+                $('.content').show();
+                $('.site-main').addClass('has-content-open')
+                window.dispatchEvent(new Event('resize'));
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

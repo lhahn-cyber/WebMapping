@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>final icons</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css' rel='stylesheet' />
+    
+
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+    </head>
+<body>
+<style>
+    /* The CSS for the "Fly" buttons  */
+        .fly {
+            display: inline-block; /* displays over the map */
+            position: relative; /* displays over the map */
+            margin: 0px auto; 
+            width: 10%;  /* width of parent div */
+            padding: 10px;
+            border-style: solid;
+            border-color: oldlace;
+            border-radius: 3px; /* rounded corners */
+            font-size: 1.25em;
+            text-align: center;
+            font-weight: bold;
+            color: oldlace;
+            background: Grey;
+            cursor:pointer;
+        }
+
+
+</style>
+    <div id="map"></div>
+    
+    <!--  button elements  -->
+        <button class='fly' id='StartButton'>Jump to Start</button>
+        <button class='fly' id='1977'>Jump to 1977</button> <!-- 1977 explosion -->
+        <button class='fly' id='1978'>Jump to 1978</button> <!-- 1978 hole blown/bomb -->
+        <button class='fly' id='2001'>Jump to 2001</button> <!-- livengood -->
+        <button class='fly' id='2010'>Jump to 2010</button> <!-- pump station 9 valve fail -->
+        <button class='fly' id='2011'>Jump to 2011</button> <!-- leak -->
+        <button class='fly' id='EndButton'>Jump to End</button> 
+
+
+<script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibGhhaG4yIiwiYSI6ImNtOTF1YTZhMDA0enMyanBzdndkaDQzNHEifQ.sLC3KywTNj39cVtoSzu76Q';
+    
+    // coordinates
+     var places = {
+        "type": "FeatureCollection", //pump station 1- 2011
+            "features": [
+                {
+     	  "type": "Feature",
+     	  "properties": {
+     	    "icon": "circle",
+            "description": "<h4>2011 Leak<h4><br><p>A leak was discovered in the basement of Pump Station 1, the pipeline flow was drasticallly reduced for 80+ hours while they put an oil collection system in place. Later a bypass was installed to avoid the leak. </p>"
+     	  },
+     	  "geometry": {
+     	    "type": "Point",
+     	    "coordinates": [-148.619864, 70.256807]
+     	  }
+                },
+                {
+     	  "type": "Feature", //explosion at pump station -1977
+     	  "properties": {
+     	    "icon": "circle",
+            "description": "<h4>1977 Pump Station Explosion<h4><br><p>In 1977, shortly after the pipeline's opening, an explosion occured during routine maintenance that killed 1 man, injured sevral others, and started a forest fire in the sorrounding area as hot oil flowed out of the pump station. The pipeline shut down for a week as they started fixing it.</p>"
+     	  },
+     	  "geometry": {
+              "type": "Point",
+              "coordinates": [-146.8225876, 64.5441379]
+     	}
+         },
+         {
+     	"type": "Feature", //hole blown/bomb- 1978
+     	"properties": {
+     	    "icon": "circle",
+            "description": "<h4>1978 Bombing<h4><br><p>In 1978, east of fairbanks someone blew a 1-2inch hole in the pipeline causing the largest oil spill of the pipeline itself. About 658,000 gallons, or 15,000 barrels of oil covered 4 acres of snow around the pipeline, and it was shut down for 20 hours. In 2014 a Phillip Olson acknowledged carrying out the bombing, but stated another person was also involved and an investigation followed.</p>"
+     	},
+     	"geometry": {
+     	    "type": "Point",
+     	    "coordinates": [-147.5179395,64.8904552]
+     	}
+         },
+         {
+     	"type": "Feature", //Livengood- 2001
+     	"properties": {
+     	    "icon": "circle",
+            "description": "<h4>2001 Gunshots<h4><br><p>Although the pipeline is resistant to gunshots in 2001, a drunk man, Daniel Lewis, shot a hole in a weld near Livengood. Thousands of barrels of oil leaked, but about 4,000 barrels were recovered and reinjected into the pipeline, still 2 acres of land were soiled and had to be removed. It took 60 hours for the repairs to finish and Lewis was found guilty in 2002.</p>"
+     	},
+     	"geometry": {
+     	    "type": "Point",
+     	    "coordinates": [-148.719489, 65.503824]
+     	}
+         },
+         {
+     	"type": "Feature", //pump station 9- 2010
+     	"properties": {
+     	    "icon": "circle",
+            "description": "<h4>2010 Valve Failure<h4><br><p>During a scheduled shutdown, thousands of barrels were spilled due to a relief valve control circuit failing. The oil overflowed onto a secondary containment area.</p>"
+     	},
+     	"geometry": {
+     	    "type": "Point",
+     	    "coordinates": [-145.7705287, 63.931366]
+     	}
+         },
+         {
+     	"type": "Feature",  //START
+     	"properties": {
+     	    "icon": "racetrack1"
+     	},
+     	"geometry": {
+     	    "type": "Point",
+     	    "coordinates": [-148.619864, 70.256807] 
+     	}
+         },
+         {
+     	"type": "Feature", //END
+     	"properties": {
+     	    "icon": "racetrack1"
+     	},
+     	"geometry": {
+     	    "type": "Point",
+     	    "coordinates": [-146.3499247, 61.0831432]
+     	}
+         }
+  ]
+}
+    // end coordinates
+     
+    //var filterGroup = document.getElementById('filter-group');
+    
+    //set bounds!
+    var bounds = [
+        [-161.5843978, 59.0526364], // southwest 
+        [-129.657499, 70.206155] // northeast 
+    ]
+    var map = new mapboxgl.Map({
+            container: 'map', // id of a div on your page, where the map will be inserted
+            style: 'mapbox://styles/lhahn2/cmboptphy005m01sp5ch06r21', // style with data
+            center: [-147.71639000, 64.83778000], 
+            zoom: 5, // starting zoom
+        // set max zoom
+            maxBounds: bounds
+        });
+    
+        /***  LISTENERS  ***/
+        // Add a 'Listener' to the button element with the ID 'StartButton'.
+        document.getElementById('StartButton').addEventListener('click', function ()  {
+            map.jumpTo({
+                center: [-148.619864, 70.256807], 
+                zoom: 8.5
+            });
+        });
+        
+        // Add a 'Listener' to the button element with the ID '1977'.
+        document.getElementById('1977').addEventListener('click', function () {
+            map.jumpTo({
+                center:[-146.8225876, 64.5441379], 
+                zoom: 8
+            });
+        });
+        
+        // listener to button element for 1978
+        document.getElementById('1978').addEventListener('click', function () {
+            map.jumpTo({
+                center:[-147.5179395,64.8904552], 
+                zoom: 8
+            });
+        });
+        //listener for 2001 button
+        document.getElementById('2001').addEventListener('click', function () {
+            map.jumpTo({
+                center:[-148.719489, 65.503824], 
+                zoom: 8.5
+            });
+        });
+        //listener for 2010 button
+        document.getElementById('2010').addEventListener('click', function () {
+            map.jumpTo({
+                center:[-145.7705287, 63.931366], 
+                zoom: 8.5
+            });
+        });        
+        //listener for 2011 button
+        document.getElementById('2011').addEventListener('click', function () {
+            map.jumpTo({
+                center:[-148.619864, 70.256807], 
+                zoom: 8.5
+            });
+        });    
+        //listener for end button
+        document.getElementById('EndButton').addEventListener('click', function () {
+            map.jumpTo({
+                center:[-146.3499247, 61.0831432], 
+                zoom: 8.5
+            });
+        });    
+        /***  END LISTENERS  ***/    
+
+    
+    // MAP ON LOAD  
+    map.on('load', function () {
+         map.addSource('places', {
+     'type': 'geojson',
+     'data': places
+ });
+
+ // add a new layer using the points
+    places.features.forEach(function (feature) {
+         var symbol = feature.properties['icon']; // get the value from the 'icon' field in the data
+         var layerID = 'poi-' + symbol;
+
+         // Add a layer for this symbol type if there is not a layer with this name already.
+         if (!map.getLayer(layerID)) {
+         map.addLayer({
+             'id': layerID,
+             'type': 'symbol',
+             'source': 'places',
+             'layout': {
+             'icon-image': symbol, //NO + number bc the custom style icons have exact names
+             'icon-allow-overlap': true
+             },
+             // filter the dataset for all features that have the `icon` value that is the same and the current `symbol` value. 
+             'filter': ['==', 'icon', symbol] 
+         });
+
+     //                // Add checkbox and label elements for the layer.
+     //                var input = document.createElement('input');
+     //                input.type = 'checkbox';
+     //                input.id = layerID;
+     //                input.checked = true;
+     //                filterGroup.appendChild(input);
+
+     //                var label = document.createElement('label');
+     //                label.setAttribute('for', layerID);
+     //                label.textContent = symbol;
+     //                filterGroup.appendChild(label);
+
+     //                // When the checkbox changes, update the visibility of the layer.
+     //                input.addEventListener('change', function (e) {
+     //                    map.setLayoutProperty(
+     //                        layerID,
+     //                        'visibility',
+     //                        e.target.checked ? 'visible' : 'none'
+     //                    );
+     //                });
+               
+             
+             /*** POPUPS CLICK ***/
+             ['poi-circle', 'poi-checkflag'].forEach(layerID => {
+                 map.on('click', layerID, function (e) {
+                     const coordinates = e.features[0].geometry.coordinates.slice();
+                     const html = e.features[0].properties.description;
+
+                     new mapboxgl.Popup()
+                         .setLngLat(coordinates)
+                         .setHTML(html)
+                         .addTo(map);
+                 });
+
+                 map.on('mouseenter', layerID, () => map.getCanvas().style.cursor = 'pointer');
+                 map.on('mouseleave', layerID, () => map.getCanvas().style.cursor = '');
+                }); 
+
+             
+                
+         }  // Close map.addLayer if block
+    });   // Close places.features.forEach
+});       // Close map.on('load')
+
+    
+    
+    
+</script>
+
+</body>
+</html>
