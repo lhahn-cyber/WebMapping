@@ -17,6 +17,10 @@ From https://medium.com/nyc-planning-digital/a-versatile-layout-for-full-screen-
     <!-- CSS Links -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" rel="stylesheet" />
     <link href="FinalLayout.css" rel="stylesheet" />
+       <!--   Link to Google font-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     
 
     
@@ -24,40 +28,14 @@ From https://medium.com/nyc-planning-digital/a-versatile-layout-for-full-screen-
 
 <body>
 
-    <!-- SITE HEADER? SHOULD INCLUDE OR NO
-            <div class="site-header">
-        <strong class="site-title">Incident History of the Trans-Alaska Pipeline</strong>
-    </div> -->
 
     <div class="site-main grid-x has-content-open">
 
-        <!-- <div class="search-container cell medium-3 large-2">
-            <input type="text" placeholder="Search..." class="search" />
-            <ul class="search-results no-bullet">
-                <li>Search Result 1</li>
-                <li>Search Result 2</li>
-                <li>Search Result 3</li>
-            </ul>
-        </div> -->
         
         <div class="map-container cell medium-auto large-order-2">
             <!-- FRAME -->
             	<iframe src="FinalProjMapwithIcons.html" title="Map"></iframe> 
         </div>
-
-        <!--  Sidebar panel  
-        <div class="sidebar cell medium-3 large-2 large-order-1 show-for-medium">
-            <h5>Sidebar</h5>
-            <ul>
-                <li><a class="content-link" href="#">Open Content</a></li>
-                <li>Item 2</li>
-                <li>Item 3</li>
-                <li>Item 4</li>
-            </ul>
-
-            <hr />
-
-        </div> -->
 
         <div class="content-close-button-container">
             <a href="#" class="content-close-button">×</a>
@@ -67,12 +45,16 @@ From https://medium.com/nyc-planning-digital/a-versatile-layout-for-full-screen-
         <div class="content cell large-5 large-order-3">
             <h3>Background</h3>
             <!-- PICTURE AND SOURCE -->
-            <img src= "https://i0.wp.com/niche-canada.org/wp-content/uploads/2017/01/1977-LoC-Photo2.png?w=926&ssl=1">
+            <img src= "https://i0.wp.com/niche-canada.org/wp-content/uploads/2017/01/1977-LoC-Photo2.png?w=926&ssl=1" alt = “black and white close up of pipeline with mountains in background”>
             <p> Trans-Alaska Pipeline System, 1977. Library of Congress</p> <!-- library of congress website wasn't loading? so got it from a candian site that includes it -->
+            
             <!-- normal background text stuff-->
-            <p>The Trans-Alaska Pipeline....</p>
-            <p>Years of opposition from both conservation groups and Indigenous people...</p>
-            <p>Pipeline stats!!</p>
+            <p>The Trans-Alaska Pipeline started operating in 1977, after years of diffult construction. The engineers had to naviagte the difficult terrain and permafrost, developing unique construction techniques to cope with the frozen ground. The pipeline makes up a signifiant porction of Alaska's revenue every year and also provides work, however the pipeline did not come to be without incident.</p>
+            <p>Despite years of opposition from both conservation groups and Indigenous people the pipeline was built in the 1970s. The groups cited concerns over habitat loss, the land of native people being used without them seeing any benefit, and changes to tradition caused by the pipeline scaring off wildlife (whales, caribou), however after many lawsuits it was determined other transportation would have greater environmental impact. Nixon signed the Alaska Native Claims Settlement Act in 1971, requiring Native groups to give up their land in return for federal land and $962.5 million.</p>
+            <!-- chat gpt code here -->
+            <p> The sources used to create this map include the <a href="https://en.wikipedia.org/wiki/Trans-Alaska_Pipeline_System#Native_objections" target="_blank">Trans-Alaska Pipeline Wikipedia page</a>, the <a href="https://www.nytimes.com/1977/07/09/archives/explosion-closes-alaskan-pipeline-1-dead-6-hurt-pumping-station.html" target="_blank">New York Times archive</a>, and the <a href="https://www.adn.com/alaska-news/article/feds-charge-fairbanks-man-lying-about-1978-pipeline-sabotage-bombing-0/2014/05/24/" target="_blank">Anchorage Daily News</a>.</p>
+            <!-- chat gpt code ends -->
+
         </div>
 
     </div>
